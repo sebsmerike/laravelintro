@@ -53,6 +53,11 @@ Route::get('/home',
     HomeController::class // __invoke
 );
 
+Route::get('/home/{type}', 
+    [HomeController::class,
+    'alert']
+);
+
 // POST
 
 Route::get('/posts', 
