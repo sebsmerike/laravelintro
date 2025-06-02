@@ -53,9 +53,14 @@ Route::get('/home',
     HomeController::class // __invoke
 );
 
-Route::get('/home/{type}', 
+Route::get('/home/alert/{type}', 
     [HomeController::class,
     'alert']
+);
+
+Route::get('/home/layout/{type}', 
+    [HomeController::class,
+    'layout']
 );
 
 // POST
