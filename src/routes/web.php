@@ -83,7 +83,7 @@ Route::get('/post/{idpost}',
 
 // TEST DB
 
-Route::get('/newproduct', function (){
+Route::get('/test/newproduct', function (){
     $product = new Products;
 
     $product->name = "Prueba";
@@ -92,6 +92,27 @@ Route::get('/newproduct', function (){
     $product->desc = "Producto de prueb, yeei.";
 
     $product->save();
+
+    return $product;
+});
+
+Route::get('/test/getproductid', function (){
+    $product = Products::find(2);
+
+    return $product;
+});
+
+Route::get('/test/getproductname', function (){
+    $product = Products::where('name', 'Prueba')
+                            ->first(); // primer registro
+
+    return $product;
+});
+
+Route::get('/test/getproducts', function (){
+    $product = Products::where('id', '>', 1) // evaluar las condición 
+                        ->take(2) // Número de registros
+                        ->get(); // Obtener varios registros
 
     return $product;
 });
