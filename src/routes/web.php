@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Models\Products;
 
 Route::get('/', function () {
     //return view('welcome');
@@ -79,3 +80,18 @@ Route::get('/post/{idpost}',
     [PostController::class, // Nombre clase Controller
     'show'] // function name
 );
+
+// TEST DB
+
+Route::get('/newproduct', function (){
+    $product = new Products;
+
+    $product->name = "Prueba";
+    $product->price = 99.99;
+    $product->scriptable = "009-ja";
+    $product->desc = "Producto de prueb, yeei.";
+
+    $product->save();
+
+    return $product;
+});
